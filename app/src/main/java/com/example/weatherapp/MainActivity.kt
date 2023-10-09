@@ -26,12 +26,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    MainScreenView()
                 }
             }
         }
     }
 }
 
+@Composable
+fun MainScreenView(){
+    val navController = rememberNavController()
+    Scaffold(
+        bottomBar = { BottomNavigation(navController = navController) }
+    ) {paddingValues ->
 
+        NavigationGraph(navController = navController, modifier=Modifier.padding(paddingValues ) )
+    }
+}
 
